@@ -1,0 +1,240 @@
+/* --- RESET E BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+    padding-top: 70px; /* Evita que o conteúdo fique atrás do menu fixo */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- CABEÇALHO (HEADER) --- */
+.header {
+    background-color: #004080; /* Azul Marinho */
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span {
+    font-weight: 300;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: 0.3s;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.nav-menu li a:hover {
+    color: #ffd700; /* Dourado */
+}
+
+/* --- MENU MOBILE (HAMBÚRGUER) --- */
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* --- SEÇÕES GERAIS --- */
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #004080;
+    margin-bottom: 40px;
+}
+
+/* --- SEÇÃO VÍDEOS --- */
+.videos-section {
+    padding: 80px 0;
+    background-color: #f4f7f6;
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.video-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+}
+
+.video-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Container da Imagem com Efeito Play */
+.thumb-container {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.thumb-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 64, 128, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.play-overlay i {
+    color: white;
+    font-size: 3.5rem;
+}
+
+.video-card:hover .play-overlay {
+    opacity: 1;
+}
+
+.video-info {
+    padding: 20px;
+    text-align: left;
+}
+
+.video-info h3 {
+    font-size: 1.2rem;
+    color: #004080;
+    margin-bottom: 10px;
+}
+
+.video-info p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* --- FOOTER E WHATSAPP --- */
+.footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        background-color: #004080;
+        flex-direction: column;
+        text-align: center;
+        transition: 0.4s;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 15px 0;
+    }
+
+    .nav-menu li a {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+}

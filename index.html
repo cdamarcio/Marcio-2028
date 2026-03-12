@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Márcio O Fiscal do Povo - CDA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Márcio<span> O Fiscal do Povo</span></div>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#sobre">SOBRE</a></li>
+                <li><a href="#propostas">PROPOSTAS</a></li>
+                <li><a href="#videos">VÍDEOS</a></li>
+                <li><a href="#contato">CONTATO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Por uma Conceição do Araguaia mais transparente.</h1>
+            <p>Fiscalizando hoje para garantir o amanhã de nossa cidade.</p>
+        </div>
+    </section>
+
+    <section id="propostas" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Minhas Propostas</h2>
+            <div class="container-grid">
+                <div class="card">
+                    <h3>Transparência Total</h3>
+                    <p>Monitoramento em tempo real das contas públicas de CDA.</p>
+                </div>
+                <div class="card">
+                    <h3>Saúde com Dignidade</h3>
+                    <p>Fiscalização rigorosa na aplicação de recursos em postos e hospitais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="videos-section">
+        <div class="container">
+            <h2 class="section-title">Ações em Vídeo</h2>
+            <p class="subtitle">Acompanhe nosso trabalho de fiscalização e denúncias.</p>
+            
+            <div class="video-grid">
+                
+                <div class="video-card">
+                    <a href="https://www.youtube.com/watch?v=7ZWNMENcNwrc" target="_blank" rel="noopener noreferrer">
+                        <div class="thumb-container">
+                            <img src="https://img.youtube.com/vi/76pEAs1O03U/mqdefault.jpg" alt="Miniatura Vídeo">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Fiscalização na Saúde</h3>
+                            <p>Visita técnica para conferir o atendimento e medicamentos em CDA.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="video-card">
+                    <a href="https://www.youtube.com/watch?v=XN36Bex6hzo&t=11s" target="_blank" rel="noopener noreferrer">
+                        <div class="thumb-container">
+                            <img src="https://img.youtube.com/vi/76pEAs1O03U/mqdefault.jpg" alt="Miniatura Vídeo">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Infraestrutura Urbana</h3>
+                            <p>Análise das obras de pavimentação nos bairros de CDA.</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="video-card">
+                    <a href="https://www.youtube.com/watch?v=DGyqHl-8TAY" target="_blank" rel="noopener noreferrer">
+                        <div class="thumb-container">
+                            <img src="https://img.youtube.com/vi/76pEAs1O03U/mqdefault.jpg" alt="Miniatura Vídeo">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>Educação e Merenda</h3>
+                            <p>Verificando a qualidade da merenda escolar nas escolas municipais.</p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section-padding">
+        <div class="container">
+            <h2>Contato</h2>
+            <p>Entre em contato para denúncias ou sugestões.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>Márcio O Fiscal do Povo. © 2026 Todos os direitos reservados. <br> Conceição do Araguaia - PA</p>
+    </footer>
+
+    <a href="https://wa.me/5594992500073" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em qualquer link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
