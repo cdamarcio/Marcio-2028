@@ -7,60 +7,73 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <base target="_blank">
 </head>
 <body>
 
     <nav class="main-nav">
         <div class="nav-container">
-            <ul>
-                <li><a href="#denuncias">DENÚNCIAS</a></li>
-                <li><a href="#propostas">PROPOSTAS</a></li>
-                <li><a href="#inicio">MÁRCIO</a></li>
+            <ul class="nav-menu">
+                <li><a href="#inicio">INÍCIO</a></li>
+                <li><a href="#marcio">MÁRCIO</a></li>
                 <li><a href="#aline">ALINE</a></li>
+                <li><a href="#propostas">PROPOSTAS</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero-section" id="inicio">
+    <header class="hero-section" id="inicio">
         <div class="hero-content">
             <h1 class="hero-title">Márcio O Fiscal do Povo</h1>
             <p class="hero-subtitle">CDA Sem Corrupção! 2028</p>
 
             <div class="hero-image-container">
-                <img src="foto-marcio.png" alt="Márcio O Fiscal do Povo 2028" class="hero-image">
+                <img src="foto-marcio.png" alt="Márcio O Fiscal do Povo" class="hero-image">
                 <div class="hero-badge">Juntos por Conceição do Araguaia - PA</div>
             </div>
         </div>
-        <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+    </header>
+
+    <section class="biografia-section" id="marcio">
+        <div class="container-biografia">
+            <div class="bio-card">
+                <h2 class="section-title-premium">Quem é Márcio</h2>
+                <div class="bio-content">
+                    <p class="bio-intro"><strong>MÁRCIO RODRIGUES DE OLIVEIRA</strong>, nascido em 21/10/1978 (47 anos), filho de Josué (Jesu) Machado de Oliveira e Maria Helena Rodrigues de Oliveira...</p>
+                    <div class="bio-timeline">
+                        <div class="timeline-item"><i class="fas fa-trophy"></i><p><strong>1º colocado</strong> no concurso para Analista de Sistemas da prefeitura de CDA.</p></div>
+                        <div class="timeline-item"><i class="fas fa-graduation-cap"></i><p>Engenheiro Civil e Licenciado em Informática.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="denuncias-section" id="denuncias">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Denúncias</h2>
-            <p class="section-subtitle">Transparência e fiscalização em CDA. Acompanhe os casos e resoluções.</p>
+    <section class="biografia-section" id="aline" style="background: #ffffff;">
+        <div class="container-biografia">
+            <div class="bio-card" style="border-left: 8px solid var(--blue); border-right: 8px solid var(--gold); border-radius: 50px 0 50px 0;">
+                <h2 class="section-title-premium">Aline Valentina</h2>
+                <div class="bio-content">
+                    <p class="bio-intro"><strong>ALINE VALENTINA</strong>, Assistente Social e Terapeuta.</p>
+                </div>
+            </div>
         </div>
-        </section>
+    </section>
 
     <section class="propostas-section" id="propostas">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Propostas de Melhorias</h2>
-            <p class="section-subtitle">Compromisso técnico com o desenvolvimento de CDA.</p>
-        </div>
-        </section>
-
-    <section class="denuncias-section" id="aline">
-        <div class="section-header fade-in">
-            <h2 class="section-title">Aline</h2>
-            <p class="section-subtitle">Apoio e coordenação no projeto Fiscal do Povo.</p>
+        <div class="container-propostas">
+            <h2 class="section-title-premium" style="color: white; text-align: center;">Propostas</h2>
+            <p style="text-align: center; color: white;">Gestão técnica baseada na ética e transparência total.</p>
         </div>
     </section>
 
     <footer class="footer">
-        <p>© 2026 Márcio O Fiscal do Povo. CDA - PA</p>
+        <p>Márcio O Fiscal do Povo. © 2026 Todos os direitos reservados. <br> Conceição do Araguaia - PA</p>
     </footer>
 
-    <a href="https://wa.me/5594992500073" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/5594992500073" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script src="script.js"></script>
 </body>
 </html>
