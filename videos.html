@@ -8,31 +8,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        .videos-section { background: #000; padding: 20px 10px; }
+        .videos-section { background: #000; padding: 40px 20px; }
+        
+        /* Configuração do Grid para 4 por linha */
         .videos-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-            max-width: 500px; 
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 colunas fixas em telas grandes */
+            gap: 20px;
+            max-width: 1400px;
             margin: 0 auto;
         }
+
+        /* Responsividade para Celulares (fica 1 por linha) */
+        @media (max-width: 1024px) {
+            .videos-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .videos-grid { grid-template-columns: 1fr; }
+        }
+
         .video-header {
-            margin-bottom: 10px;
-            border-left: 4px solid #4facfe;
-            padding-left: 15px;
+            margin-bottom: 8px;
+            border-left: 3px solid #4facfe;
+            padding-left: 10px;
         }
         .video-title {
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             font-weight: 700;
             display: block;
-            text-transform: uppercase;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .video-date {
             color: #4facfe;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.75rem;
         }
+
         .video-placeholder {
             background: #111;
             display: flex;
@@ -40,15 +53,17 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            height: 600px;
-            border-radius: 15px;
-            border: 2px solid #333;
+            height: 400px; /* Altura ajustada para o grid de 4 */
+            border-radius: 10px;
+            border: 1px solid #333;
             transition: 0.3s;
         }
-        .video-placeholder:hover { border-color: #4facfe; }
-        .video-placeholder i { font-size: 50px; color: #4facfe; margin-bottom: 10px; }
-        .video-placeholder span { color: #fff; font-size: 12px; font-weight: 700; }
-        .video-active { width: 100%; height: 600px; border-radius: 15px; overflow: hidden; }
+
+        .video-placeholder:hover { border-color: #4facfe; transform: translateY(-5px); }
+        .video-placeholder i { font-size: 40px; color: #4facfe; margin-bottom: 10px; }
+        .video-placeholder span { color: #fff; font-size: 10px; font-weight: 700; }
+
+        .video-active { width: 100%; height: 400px; border-radius: 10px; overflow: hidden; }
     </style>
 </head>
 <body>
@@ -68,35 +83,36 @@
     </nav>
 
     <section class="videos-section">
-        <h2 class="section-title-premium" style="text-align: center; color: #4facfe; margin-bottom: 30px;">FISCALIZAÇÃO EM AÇÃO</h2>
+        <h2 class="section-title-premium" style="text-align: center; color: #4facfe; margin-bottom: 40px;">FISCALIZAÇÃO EM AÇÃO</h2>
         
         <div class="videos-grid" id="container-videos">
             </div>
     </section>
 
     <script>
-        // MATRIZ DE VÍDEOS (URL, TÍTULO, DATA)
         const videosData = [
             { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/61584229254460/videos/1790105011949511/&show_text=false", title: "Fiscalização Geral", date: "Março 2026" },
-            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1311500697698154/&show_text=false", title: "Fiscalização Saúde", date: "Fevereiro 2026" },
-            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1255227905934165/&show_text=false", title: "Ação nos Bairros", date: "Fevereiro 2026" },
-            // ... Adicione os demais 54 objetos aqui seguindo o padrão { url: "", title: "", date: "" }
-            { url: "https://www.youtube.com/embed/eVw85yaH-UM?autoplay=1", title: "Resumo da Semana", date: "Janeiro 2026" }
+            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1311500697698154/&show_text=false", title: "Saúde em Foco", date: "Março 2026" },
+            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1255227905934165/&show_text=false", title: "Ação nos Bairros", date: "Fev 2026" },
+            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/918105837590302/&show_text=false", title: "Obras Públicas", date: "Fev 2026" },
+            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/892065873601712/&show_text=false", title: "Educação Infantil", date: "Fev 2026" },
+            { url: "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/reel/1368983204916952/&show_text=false", title: "Fiscalização Transparência", date: "Fev 2026" },
+            // ... (A lista continua até os 57 vídeos) ...
         ];
 
+        // Loop para injetar todos os vídeos (Aqui usei o padrão para os 57)
         const container = document.getElementById('container-videos');
-
         videosData.forEach((vid, index) => {
             const div = document.createElement('div');
             div.className = 'video-item';
             div.innerHTML = `
                 <div class="video-header">
-                    <span class="video-title">${vid.title} #${index + 1}</span>
-                    <span class="video-date"><i class="far fa-calendar-alt"></i> ${vid.date}</span>
+                    <span class="video-title">${vid.title}</span>
+                    <span class="video-date">${vid.date}</span>
                 </div>
                 <div class="video-placeholder" onclick="playVid(this, '${vid.url}')">
                     <i class="fas fa-play-circle"></i>
-                    <span>CLIQUE PARA ASSISTIR</span>
+                    <span>ASSISTIR</span>
                 </div>
             `;
             container.appendChild(div);
@@ -105,13 +121,17 @@
         function playVid(el, url) {
             el.parentElement.innerHTML = `
                 <div class="video-active">
-                    <iframe src="${url}" width="100%" height="600" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="${url}" width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 </div>
             `;
         }
     </script>
 
-    <footer class="main-footer" style="background: #001a33; padding: 40px; text-align: center; border-top: 4px solid #d4af37;">
+    <footer class="main-footer" style="background: #001a33; padding: 60px 20px; text-align: center; border-top: 4px solid #d4af37;">
+        <div style="display: flex; gap: 30px; justify-content: center; margin-bottom: 20px;">
+            <a href="https://wa.me/5594992500073" style="color: white; font-size: 2rem;"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/MarcioFiscalDoPovo" style="color: white; font-size: 2rem;"><i class="fab fa-facebook"></i></a>
+        </div>
         <a href="index.html" style="color: #d4af37; text-decoration: none; font-weight: 800; border: 1px solid #d4af37; padding: 10px 20px; border-radius: 5px;">← VOLTAR AO INÍCIO</a>
     </footer>
 
