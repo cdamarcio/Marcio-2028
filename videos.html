@@ -72,6 +72,10 @@
 
     <script>
         const vids = [
+            // NOVO VÍDEO (POSIÇÃO 59)
+            { url: "https://www.youtube.com/watch?v=ct3KEIpG-8c", thumb: "https://img.youtube.com/vi/ct3KEIpG-8c/maxresdefault.jpg", type: "youtube" },
+            
+            // VÍDEOS ANTERIORES
             { url: "https://www.facebook.com/MarcioFiscalDoPovo/videos/26456801260642575/", thumb: "img/capa58.png" },
             { url: "https://www.facebook.com/61584229254460/videos/1790105011949511/", thumb: "img/capa57.png" },
             { url: "https://www.facebook.com/reel/1311500697698154/", thumb: "img/capa56.png" },
@@ -143,7 +147,7 @@
             
             item.innerHTML = `
                 <div class="video-header"><span class="video-title">Ação #${displayNum}</span></div>
-                <div class="video-box" onclick="playVideo(this, '${vid.url}')">
+                <div class="video-box" onclick="playVideo(this, '${vid.url}', '${vid.type || 'fb'}')">
                     <img src="${vid.thumb}" alt="Capa" onerror="this.src='https://via.placeholder.com/450x800/1a1a1a/4facfe?text=MÁRCIO+FISCAL'">
                     <i class="fas fa-play-circle"></i>
                 </div>
@@ -151,9 +155,17 @@
             grid.appendChild(item);
         });
 
-        function playVideo(container, url) {
-            const finalUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=true`;
-            container.innerHTML = `<iframe src="${finalUrl}" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+        function playVideo(container, url, type) {
+            let finalUrl = '';
+            if(type === 'youtube') {
+                // Extrai o ID do vídeo do YouTube
+                const videoId = url.split('v=')[1];
+                finalUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                container.innerHTML = `<iframe src="${finalUrl}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+            } else {
+                finalUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=false&autoplay=true`;
+                container.innerHTML = `<iframe src="${finalUrl}" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>`;
+            }
         }
     </script>
 
