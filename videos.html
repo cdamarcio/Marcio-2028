@@ -9,7 +9,7 @@
     <style>
         .video-wrapper {
             position: relative;
-            padding-bottom: 177.77%; /* Proporção 9:16 */
+            padding-bottom: 177.77%; 
             height: 0;
             overflow: hidden;
             background: #000;
@@ -27,40 +27,45 @@
         }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 font-sans flex flex-col min-h-screen">
+<body class="bg-white text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <header class="bg-blue-900 text-white py-6 shadow-xl border-b-4 border-yellow-500">
+    <header class="bg-blue-900 text-white py-8 shadow-md border-b-4 border-yellow-500">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-3xl font-bold uppercase tracking-tighter">Márcio Rodrigues de Oliveira</h1>
-            <p class="text-yellow-400 font-bold mt-1 tracking-widest uppercase text-sm">Fiscal do Povo</p>
-            <nav class="flex justify-center space-x-6 mt-6 uppercase font-bold text-sm">
-                <a href="index.html" class="hover:text-yellow-400 transition">Início</a>
+            <h1 class="text-4xl font-extrabold uppercase tracking-tighter">Márcio Rodrigues de Oliveira</h1>
+            <p class="text-yellow-400 font-bold mt-2 tracking-[0.2em] uppercase text-sm">Fiscal do Povo</p>
+            <nav class="flex justify-center space-x-8 mt-8 uppercase font-bold text-xs">
+                <a href="index.html" class="hover:text-yellow-400 transition duration-300">Início</a>
                 <a href="videos.html" class="text-yellow-400 border-b-2 border-yellow-400 pb-1">Vídeos</a>
-                <a href="#" class="hover:text-yellow-400 transition">Denúncias</a>
+                <a href="#" class="hover:text-yellow-400 transition duration-300 text-gray-300">Denúncias</a>
             </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-2 py-8 flex-grow">
-        <div class="mb-6 border-l-4 border-blue-600 pl-3">
-            <h2 class="text-2xl font-bold text-white uppercase italic tracking-tight">Galeria de Atuação</h2>
+    <main class="container mx-auto px-2 py-10 flex-grow">
+        <div class="mb-8 border-l-8 border-blue-900 pl-4">
+            <h2 class="text-3xl font-black text-blue-900 uppercase italic tracking-tight">Galeria de Atuação</h2>
+            <p class="text-gray-500 text-sm font-bold uppercase mt-1">Fiscalizando Conceição do Araguaia</p>
         </div>
 
         <div id="video-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
             </div>
     </main>
 
-    <footer class="bg-blue-900 text-white py-10 mt-auto border-t-4 border-yellow-500">
+    <footer class="bg-blue-900 text-white py-12 mt-auto border-t-8 border-yellow-500">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-4 uppercase">Márcio Rodrigues de Oliveira</h2>
-            <p class="text-yellow-400 font-bold mb-6 tracking-widest uppercase text-sm">Fiscal do Povo</p>
-            <div class="flex justify-center space-x-6 mb-8 text-2xl">
-                <a href="https://www.facebook.com/MarcioFiscalDoPovo" target="_blank" class="hover:text-yellow-400 transition"><i class="fab fa-facebook"></i></a>
-                <a href="https://www.instagram.com/marciofiscaldopovo" target="_blank" class="hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.youtube.com/@MarcioFiscaldoPovo" target="_blank" class="hover:text-yellow-400 transition"><i class="fab fa-youtube"></i></a>
+            <h2 class="text-3xl font-extrabold mb-2 uppercase tracking-tighter">Márcio Rodrigues de Oliveira</h2>
+            <p class="text-yellow-400 font-bold mb-8 tracking-[0.3em] uppercase text-xs">Fiscal do Povo</p>
+            
+            <div class="flex justify-center space-x-8 mb-10">
+                <a href="https://www.facebook.com/MarcioFiscalDoPovo" target="_blank" class="text-3xl hover:text-yellow-400 transition transform hover:scale-110"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/marciofiscaldopovo" target="_blank" class="text-3xl hover:text-yellow-400 transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@MarcioFiscaldoPovo" target="_blank" class="text-3xl hover:text-yellow-400 transition transform hover:scale-110"><i class="fab fa-youtube"></i></a>
             </div>
-            <p class="text-sm text-blue-200">© 2026 Márcio Fiscal do Povo - Todos os direitos reservados.</p>
-            <p class="text-[10px] mt-2 text-blue-300 uppercase">Conceição do Araguaia - Pará</p>
+
+            <div class="border-t border-blue-800 pt-8">
+                <p class="text-xs text-blue-200 font-medium uppercase tracking-widest">© 2026 Márcio Fiscal do Povo - Todos os direitos reservados</p>
+                <p class="text-[10px] mt-3 text-yellow-500 font-bold uppercase tracking-[0.2em]">Conceição do Araguaia - Pará</p>
+            </div>
         </div>
     </footer>
 
@@ -132,7 +137,7 @@
 
         vids.forEach((video, index) => {
             const card = document.createElement('div');
-            card.className = "bg-gray-900 rounded-md overflow-hidden shadow border border-gray-800 hover:border-blue-900 transition-colors duration-300 flex flex-col relative";
+            card.className = "bg-gray-900 rounded-md overflow-hidden shadow-lg border border-gray-200 hover:border-blue-900 transition-colors duration-300 flex flex-col relative";
             
             let embedUrl = "";
             const videoNumber = vids.length - index;
@@ -152,13 +157,13 @@
                 <div class="video-wrapper ${isFbVideo ? 'fb-video-wrapper' : ''} flex-grow">
                     <iframe src="${embedUrl}" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" class="relative z-0"></iframe>
                     <div class="absolute top-0 left-0 w-full p-2 z-10 text-overlay rounded-t-md">
-                        <p class="text-yellow-500 font-bold text-[9px] uppercase tracking-wider">Vídeo ${videoNumber}</p>
-                        ${video.title ? `<h3 class="text-[10px] font-semibold text-white mt-0.5 line-clamp-1 uppercase">${video.title}</h3>` : ''}
+                        <p class="text-yellow-400 font-bold text-[9px] uppercase tracking-widest">Vídeo ${videoNumber}</p>
+                        ${video.title ? `<h3 class="text-[10px] font-bold text-white mt-0.5 line-clamp-1 uppercase">${video.title}</h3>` : ''}
                     </div>
                 </div>
-                <div class="p-1.5 border-t border-gray-800 bg-gray-900 relative z-20">
-                    <a href="${video.url}" target="_blank" class="text-[10px] text-gray-400 hover:text-yellow-500 transition block text-center uppercase font-bold tracking-tighter">
-                        Ver Original <i class="fas fa-external-link-alt ml-1 text-[8px]"></i>
+                <div class="p-2 border-t border-gray-100 bg-white relative z-20">
+                    <a href="${video.url}" target="_blank" class="text-[9px] text-blue-900 hover:text-yellow-600 transition block text-center uppercase font-black tracking-tighter">
+                        Link Original <i class="fas fa-external-link-alt ml-1"></i>
                     </a>
                 </div>
             `;
