@@ -1,54 +1,49 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vídeos - Márcio O Fiscal do Povo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Vídeos - Márcio Fiscal do Povo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #000; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; color: #fff; }
-        .videos-section { padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .section-title-premium { font-size: 2rem; color: #4facfe; font-weight: 900; text-transform: uppercase; border-bottom: 3px solid #d4af37; margin-bottom: 40px; text-align: center; }
-        
-        /* Grid Otimizado */
-        .videos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1400px; }
-        
-        .video-item { background: #111; border-radius: 12px; overflow: hidden; border: 1px solid #333; transition: 0.3s; }
-        .video-item:hover { border-color: #4facfe; transform: translateY(-3px); }
-        
-        .video-header { padding: 12px; background: #1a1a1a; border-bottom: 1px solid #333; }
-        .video-title { color: #fff; font-size: 0.85rem; font-weight: 700; }
-
-        /* Box de Vídeo Ultra-Leve (Sem Imagem) */
-        .video-box { 
-            width: 100%; height: 450px; background: linear-gradient(135deg, #001a33 0%, #000 100%); 
-            position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center;
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 177.77%; /* Proporção vertical para Reels/Shorts */
+            height: 0;
+            overflow: hidden;
+            background: #000;
         }
-        .video-box i { font-size: 50px; color: #4facfe; opacity: 0.8; transition: 0.3s; z-index: 1; }
-        .video-box:hover i { transform: scale(1.2); opacity: 1; }
-        
-        /* Texto de ajuda para o usuário */
-        .video-box::after { content: 'CLIQUE PARA ASSISTIR'; position: absolute; bottom: 20px; font-size: 0.7rem; font-weight: 700; color: #4facfe; letter-spacing: 1px; }
-
-        iframe { width: 100%; height: 100%; border: none; }
-        
-        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px; background: #25d366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; text-decoration: none; }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
+        }
+        .fb-video-wrapper {
+            padding-bottom: 100%; /* Ajuste para vídeos quadrados do FB */
+        }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-white font-sans">
 
-    <section class="videos-section">
-        <h2 class="section-title-premium">FISCALIZAÇÃO EM AÇÃO</h2>
-        <div class="videos-grid" id="main-grid"></div>
-    </section>
+    <header class="bg-blue-900 shadow-2xl p-6 mb-10 border-b-4 border-yellow-500">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-black uppercase tracking-tighter">
+                <i class="fas fa-eye mr-2"></i> Márcio Fiscal do Povo
+            </h1>
+            <p class="text-yellow-400 font-bold mt-2">Fiscalizando por Conceição do Araguaia</p>
+        </div>
+    </header>
 
-    <a href="https://wa.me/5594992500073" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <main class="container mx-auto px-4 pb-20">
+        <div id="video-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            </div>
+    </main>
 
     <script>
-        // Lista simplificada - Sem propriedades de imagem para ser rápida
         const vids = [
-            { url: "https://www.youtube.com/watch?v=ct3KEIpG-8c", type: "yt" }, // Pos 58
+            { url: "https://www.youtube.com/shorts/eVw85yaH-UM", type: "yt", title: "Vídeo 60 - Câmara Municipal" },
+            { url: "https://www.youtube.com/watch?v=ct3KEIpG-8c", type: "yt", title: "Vídeo 59" },
             { url: "https://www.facebook.com/MarcioFiscalDoPovo/videos/26456801260642575/" },
             { url: "https://www.facebook.com/61584229254460/videos/1790105011949511/" },
             { url: "https://www.facebook.com/reel/1311500697698154/" },
@@ -109,33 +104,37 @@
             { url: "https://www.facebook.com/reel/838948629033710/" }
         ];
 
-        const grid = document.getElementById('main-grid');
-        const total = vids.length;
+        const grid = document.getElementById('video-grid');
 
-        vids.forEach((vid, i) => {
-            const num = total - i;
-            const displayNum = num < 10 ? '0' + num : num;
-            const item = document.createElement('div');
-            item.className = 'video-item';
+        vids.forEach((video, index) => {
+            const card = document.createElement('div');
+            card.className = "bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-gray-700";
             
-            item.innerHTML = `
-                <div class="video-header"><span class="video-title">AÇÃO #${displayNum}</span></div>
-                <div class="video-box" onclick="loadVideo(this, i)">
-                    <i class="fas fa-play-circle"></i>
+            let embedUrl = "";
+            const videoNumber = vids.length - index;
+
+            // Lógica para gerar o link de embed correto
+            if (video.url.includes("youtube.com") || video.url.includes("youtu.be")) {
+                let id = "";
+                if(video.url.includes("shorts/")) id = video.url.split("shorts/")[1].split("?")[0];
+                else if(video.url.includes("v=")) id = video.url.split("v=")[1].split("&")[0];
+                embedUrl = `https://www.youtube.com/embed/${id}`;
+            } else if (video.url.includes("facebook.com")) {
+                embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}&show_text=0`;
+            }
+
+            card.innerHTML = `
+                <div class="video-wrapper ${video.url.includes('videos') ? 'fb-video-wrapper' : ''}">
+                    <iframe src="${embedUrl}" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </div>
+                <div class="p-3">
+                    <p class="text-yellow-500 font-bold text-xs uppercase">Vídeo ${videoNumber}</p>
+                    <a href="${video.url}" target="_blank" class="text-sm hover:text-blue-400 transition block mt-1 truncate">
+                        Ver postagem original <i class="fas fa-external-link-alt ml-1 text-xs"></i>
+                    </a>
                 </div>
             `;
-            grid.appendChild(item);
-
-            // Função de clique - injeta o iframe só quando clica
-            item.querySelector('.video-box').onclick = function() {
-                if(vid.type === 'yt') {
-                    const id = vid.url.split('v=')[1];
-                    this.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-                } else {
-                    const fb = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(vid.url)}&show_text=false&autoplay=true`;
-                    this.innerHTML = `<iframe src="${fb}" allowfullscreen="true" allow="autoplay; encrypted-media; picture-in-picture"></iframe>`;
-                }
-            };
+            grid.appendChild(card);
         });
     </script>
 </body>
