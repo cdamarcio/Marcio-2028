@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentos - Márcio 2028</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c; /* Cor PDF */
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            background: var(--secondary-color);
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #bdc3c7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .pdf-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .pdf-item {
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border-left: 6px solid var(--accent-color);
+        }
+
+        .pdf-item:hover {
+            transform: translateX(5px);
+        }
+
+        .pdf-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .pdf-info i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .pdf-text h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .pdf-text p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .btn-view {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn-view:hover {
+            background-color: #c0392b;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Gestão de Documentos</h1>
+</header>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="documentos.html">Documentos</a>
+</nav>
+
+<div class="container">
+    <h2><i class="fas fa-file-pdf"></i> Repositório de Arquivos PDF</h2>
+    
+    <div class="pdf-list">
+        
+        <div class="pdf-item">
+            <div class="pdf-info">
+                <i class="fas fa-file-pdf"></i>
+                <div class="pdf-text">
+                    <h3>Fiscalização Prefeitura - Relatório PF</h3>
+                    <p>Referente à operação realizada em Conceição do Araguaia.</p>
+                </div>
+            </div>
+            <a href="pdfs/relatorio_pf.pdf" target="_blank" rel="noopener noreferrer" class="btn-view">
+                Abrir PDF
+            </a>
+        </div>
+
+        <div class="pdf-item">
+            <div class="pdf-info">
+                <i class="fas fa-file-pdf"></i>
+                <div class="pdf-text">
+                    <h3>Denúncia Ministério Público</h3>
+                    <p>Protocolo de acompanhamento de verbas da educação.</p>
+                </div>
+            </div>
+            <a href="pdf/01.pdf" target="_blank" rel="noopener noreferrer" class="btn-view">
+                Abrir PDF
+            </a>
+        </div>
+
+        </div>
+</div>
+
+        <footer class="main-footer" style="background: #001a33; padding: 60px 20px; border-top: 5px solid #d4af37; text-align: center;">
+            <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
+                <h2 style="color: #d4af37; font-size: 1.8rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">Márcio O Fiscal do Povo</h2>
+                <p style="color: white; margin-bottom: 30px;">© 2026 Todos os direitos reservados. Conceição do Araguaia - PA</p>
+                <div style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+                    <a href="https://wa.me/5594992500073" target="_blank" style="color: white; font-size: 2.5rem;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/MarcioFiscalDoPovo" target="_blank" style="color: white; font-size: 2.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/marcioofiscaldopovo/" target="_blank" style="color: white; font-size: 2.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@MarcioFiscalDoPovo" target="_blank" style="color: white; font-size: 2.5rem;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </footer>
+
+</body>
+</html>
