@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAD-2022 - Análise Jurídica Completa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #e8e8e8;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #e94560;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #e94560;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+
+        h2 {
+            color: #e94560;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-number {
+            background: #e94560;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .highlight-box {
+            background: rgba(233, 69, 96, 0.15);
+            border: 1px solid rgba(233, 69, 96, 0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .highlight-box strong {
+            color: #e94560;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #e94560, #533483);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #e94560;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+
+        .date {
+            color: #e94560;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .warning {
+            background: rgba(255, 193, 7, 0.15);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .warning strong {
+            color: #ffc107;
+        }
+
+        .danger-box {
+            background: rgba(220, 53, 69, 0.15);
+            border: 1px solid rgba(220, 53, 69, 0.4);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .danger-box strong {
+            color: #dc3545;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #e94560;
+        }
+
+        .recommendation {
+            background: rgba(40, 167, 69, 0.15);
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .recommendation h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .legal-reference {
+            background: rgba(0, 123, 255, 0.1);
+            border-left: 3px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e94560;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin: 5px;
+        }
+
+        .person-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .person-card strong {
+            color: #e94560;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PAD-2022</h1>
+            <p class="subtitle">Análise Jurídica do Processo Administrativo Disciplinar</p>
+            <div style="margin-top: 15px;">
+                <span class="badge">Portaria nº 0132/2022</span>
+                <span class="badge">Matrícula 139</span>
+                <span class="badge">Analista de Sistemas</span>
+            </div>
+        </header>
+
+        <div class="section">
+            <h2><span class="section-number">1</span> Cronologia e Inércia Administrativa</h2>
+            <p>O processo apresenta um hiato temporal significativo de quase <strong>4 anos</strong> sem movimentação efetiva:</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">21 de julho de 2022</span>
+                    <p><strong>Abertura do PAD</strong> - Instauração pela Portaria nº 0132/2022</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">08 de setembro de 2022</span>
+                    <p><strong>Ciência da Notificação</strong> - Assinatura do servidor</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">21 de setembro de 2022</span>
+                    <p><strong>Última Movimentação</strong> - Ofício solicitando dispensa de testemunhas</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">12 de fevereiro de 2026</span>
+                    <p><strong>Retomada</strong> - Despacho da Procuradoria Jurídica Municipal</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Paralisação:</strong> Mais de 1.200 dias sem atividade processual relevante
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">2</span> O Despacho de 2026 e a Prescrição</h2>
+            <p>O próprio Procurador Geral do Município, <strong>Fabiano Wanderley Dias Barros</strong>, admite no despacho recente que o feito <em>"permaneceu paralisado injustificadamente"</em> desde 2022.</p>
+
+            <div class="warning">
+                <strong>⚠️ Risco de Prescrição:</strong> O despacho menciona explicitamente a necessidade de retomar os trabalhos para <em>"evitar a consumação da prescrição da pretensão punitiva"</em>.
+            </div>
+
+            <p><strong>Origem da Retomada:</strong> A prefeitura só agiu após provocação da administração via Portal da Transparência.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">3</span> Argumentos sobre a Ilegalidade</h2>
+            <p>A legalidade dessa retomada é altamente questionável por dois motivos principais:</p>
+
+            <ul>
+                <li><strong>Duração Razoável do Processo:</strong> A Portaria original fixou o prazo de 60 dias (prorrogáveis por mais 60) para a conclusão. O processo ficou parado por mais de 1.200 dias.</li>
+                <li><strong>Prescrição Intercorrente:</strong> A paralisação por mais de 3 anos sem qualquer ato instrutório real pode configurar prescrição, extinguindo o direito do município de punir.</li>
+            </ul>
+
+            <div class="highlight-box">
+                A jurisprudência dos tribunais superiores (STJ e STF) entende que a paralisação excessiva e injustificada por culpa exclusiva da administração fere o princípio da eficiência e da segurança jurídica.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">4</span> Conflito de Interesses e Parentesco</h2>
+            <p>Fundamentos jurídicos sólidos para pedir a <strong>nulidade do processo</strong> com base no parentesco entre um membro da comissão e uma testemunha:</p>
+
+            <div class="person-card">
+                <strong>Membro da Comissão:</strong> Nelyton dos Santos Pereira (Matrícula 1737)<br>
+                <strong>Testemunha Arrolada:</strong> Nykole dos Santos Pereira<br>
+                <strong>Grau de Parentesco:</strong> Irmãos (2º grau consanguíneo)
+            </div>
+
+            <div class="legal-reference">
+                <strong>Lei 9.784/99 - Art. 18, Inciso II:</strong><br>
+                "É impedido de atuar em processo administrativo o servidor ou autoridade que... tenha participado ou venha a participar como perito, testemunha ou representante, ou se tais situações ocorrem quanto ao cônjuge, companheiro ou parente e afins até o terceiro grau"
+            </div>
+
+            <p><strong>Impedimento Legal:</strong> É proibida a atuação de autoridade ou servidor que possua parentesco consanguíneo ou afim até o terceiro grau com interessados ou testemunhas.</p>
+
+            <div class="warning">
+                <strong>⚠️ Contradição:</strong> O nome de Nykole dos Santos Pereira não aparece no Boletim de Ocorrência nº 00056/2022.101564-1 como alguém presente no momento da suposta ameaça, mas foi incluída no rol de testemunhas pela Comissão (da qual o irmão faz parte).
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">5</span> Violação do Devido Processo Legal</h2>
+            <ul>
+                <li><strong>Cerceamento de Defesa:</strong> A utilização de uma testemunha que não estava presente no local dos fatos e que possui vínculo fraternal com quem irá julgar o processo configura nulidade insanável.</li>
+                <li><strong>Juiz Imparcial:</strong> Violação ao princípio da isenção do julgamento.</li>
+                <li><strong>Ampla Defesa:</strong> Comprometimento do contraditório efetivo.</li>
+            </ul>
+
+            <p>O despacho de 12/02/2026 determina a retomada dos trabalhos assegurando o contraditório. Este é o momento para protocolar petição arguindo a <strong>suspeição e impedimento</strong> do membro Nelyton e a falsidade/imprestabilidade do testemunho de Nykole.</p>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">6</span> Responsabilização na Esfera Administrativa, Cível e Criminal</h2>
+            <p>Fundamentos para buscar responsabilização diante das contradições entre documentos oficiais e o rol de testemunhas:</p>
+
+            <h3 style="color: #e94560; margin: 20px 0 15px 0;">6.1 Contra Nelyton dos Santos Pereira (Membro da Comissão)</h3>
+
+            <div class="person-card">
+                <strong>Servidor:</strong> Nelyton dos Santos Pereira<br>
+                <strong>Matrícula:</strong> 1737<br>
+                <strong>Conduta:</strong> Atuar em processo onde sua irmã Nykole é testemunha
+            </div>
+
+            <ul>
+                <li><strong>Improbidade Administrativa:</strong> Atuar em processo com parentesco direto viola princípios da moralidade e impessoalidade (Art. 11 da Lei 8.429/92)</li>
+                <li><strong>Abuso de Autoridade:</strong> Se comprovado uso do cargo para validar testemunho falso da irmã</li>
+                <li><strong>Nulidade do PAD:</strong> Arguição de impedimento pode anular todos os atos assinados por ele, incluindo a Ata de Instalação</li>
+            </ul>
+
+            <div class="legal-reference">
+                <strong>Lei 9.784/99 - Art. 19:</strong><br>
+                "A autoridade ou servidor que incorrer em impedimento deve comunicar o fato à autoridade competente, abstendo-se de atuar. A omissão do dever de comunicar o impedimento constitui falta grave, para efeitos disciplinares."
+            </div>
+
+            <h3 style="color: #e94560; margin: 30px 0 15px 0;">6.2 Contra Nykole e Testemunhas "Plantadas"</h3>
+
+            <div class="danger-box">
+                <strong>Contraste Documental - O seu trunfo:</strong><br><br>
+                • <strong>Boletim de Ocorrência nº 00056/2022.101564-1:</strong> Cita apenas você e Marcos Evangelista na cozinha da SEMEC em 13/07/2022<br><br>
+                • <strong>Rol de Testemunhas do PAD:</strong> Oito nomes incluídos posteriormente pela Comissão (Nykole, Élida Elena Moreira e outros)<br><br>
+                • <strong>Questionamento:</strong> Testemunhas que não constavam no registro policial imediato
+            </div>
+
+            <p>Se essas pessoas depuserem afirmando ter presenciado algo que o B.O. não registra:</p>
+
+            <ul>
+                <li><strong>Crime de Falso Testemunho (Art. 342 do Código Penal):</strong> Fazer afirmação falsa ou calar a verdade em processo administrativo. <em>Pena: reclusão de 2 a 4 anos e multa</em></li>
+                <li><strong>Denunciação Caluniosa:</strong> Dar causa à instauração de investigação imputando infração de que se sabe inocente</li>
+                <li><strong>Danos Morais (Ação Cível):</strong> Reparação financeira pelo afastamento preventivo de 30 dias e abalo à honra profissional</li>
+            </ul>
+
+            <div class="legal-reference">
+                <strong>Art. 342 do Código Penal:</strong><br>
+                "Fazer afirmação falsa, ou negar ou calar a verdade como testemunha... em processo administrativo... Pena - reclusão, de 2 (dois) a 4 (quatro) anos, e multa."
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Retratação:</strong> O crime deixa de existir se o agente se retratar ou declarar a verdade <em>antes da sentença</em> no processo em que ocorreu o ilícito (Art. 342, §2º do CP).
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="section-number">7</span> Estratégia de Defesa com os Documentos</h2>
+
+            <div class="highlight-box">
+                <strong>Oportunidade:</strong> O despacho de 12/02/2026 reabre o prazo de defesa. Este é o momento exato para:
+            </div>
+
+            <ul>
+                <li><strong>Arguir Impedimento:</strong> Protocolar petição formal apontando o parentesco entre Nelyton e Nykole, baseado no Art. 18, II da Lei 9.784/99</li>
+                <li><strong>Impugnar Testemunhas:</strong> Demonstrar que Nykole e outras testemunhas não constavam no B.O. original, sendo incluídas posteriormente por membro interessado</li>
+                <li><strong>Requerer Nulidade:</strong> Solicitar a anulação de todos os atos praticados por Nelyton na comissão</li>
+                <li><strong>Provocação Criminal:</strong> Registrar ocorrência sobre falso testemunho se houver depoimento contraditório aos fatos oficiais</li>
+                <li><strong>Mandado de Segurança:</strong> Medida judicial preventiva contra a continuidade do processo viciado</li>
+            </ul>
+        </div>
+
+        <div class="recommendation">
+            <h3>📋 Recomendação Final</h3>
+            <p>O despacho de 2026 determina a <strong>celeridade máxima</strong> e a possível expedição de uma nova portaria de designação de membros. Como o próprio município reconhece a <em>"paralisação injustificada"</em>, há fortes subsídios para:</p>
+            <ul>
+                <li>Contestação judicial via <strong>Mandado de Segurança</strong></li>
+                <li>Alegação de <strong>prescrição do poder disciplinar</strong> da administração</li>
+                <li>Arguição de <strong>nulidade por suspeição</strong> do membro da comissão</li>
+                <li>Impedimento baseado no <strong>Art. 5º, LV da Constituição Federal</strong></li>
+                <li>Responsabilização por <strong>improbidade administrativa</strong> e <strong>falso testemunho</strong></li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p>Documento gerado em 01 de abril de 2026</p>
+            <p style="margin-top: 10px; font-size: 0.8em;">Esta análise é baseada nos documentos do PAD-2022 e não constitui parecer jurídico oficial</p>
+        </div>
+    </div>
+</body>
+</html>
