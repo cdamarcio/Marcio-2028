@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria de Fotos - Márcio O Fiscal do Povo</title>
+    <title>Fotos - Márcio O Fiscal do Povo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* 1. RESET E FUNDO */
+        /* --- 1. RESET E FUNDO --- */
         * {
             margin: 0;
             padding: 0;
@@ -17,17 +17,17 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #002b5c; /* Azul marinho de fundo */
-            color: #ffffff;
+            background-color: #f4f7f6;
+            color: #333;
             line-height: 1.6;
         }
 
-        /* 2. MENU NAVEGAÇÃO (STICKY) */
+        /* --- 2. MENU DE NAVEGAÇÃO --- */
         .main-nav {
             background-color: #001f3f;
             padding: 15px 0;
             width: 100%;
-            border-bottom: 2px solid #b8860b; /* Linha dourada */
+            border-bottom: 3px solid #b8860b;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -44,8 +44,9 @@
 
         .nav-logo {
             color: #fff;
-            font-weight: 800;
-            font-size: 1.1rem;
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
@@ -57,7 +58,7 @@
         .nav-menu li a {
             color: #ffffff;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             font-size: 13px;
             transition: 0.3s;
         }
@@ -66,73 +67,82 @@
             color: #ffcc00;
         }
 
-        /* 3. TÍTULO DA PÁGINA */
-        .titulo-galeria {
+        /* --- 3. CABEÇALHO DA PÁGINA --- */
+        .hero-materias {
+            background-color: #002b5c;
+            color: white;
             text-align: center;
-            margin: 50px 0 30px;
+            padding: 60px 20px;
         }
 
-        .titulo-galeria h1 {
-            font-size: 2.5rem;
-            color: #fff;
-            text-transform: uppercase;
+        .hero-materias h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
         }
 
-        .titulo-galeria p {
+        .hero-materias p {
             color: #ffcc00;
-            font-weight: 700;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* 4. GRADE DA GALERIA (CARDS) */
-        .galeria-container {
+        /* --- 4. GRADE DE MATÉRIAS (4 COLUNAS) --- */
+        .container-principal {
+            max-width: 1240px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .grade-materias {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr); /* 4 por linha */
             gap: 25px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto 60px;
         }
 
-        /* 5. ESTILO DO CARD DE FOTO */
-        .foto-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* --- 5. ESTILO DO CARD --- */
+        .card-materia {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 5px solid #001f3f;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
-        .foto-card:hover {
+        .card-materia:hover {
             transform: translateY(-10px);
-            border-color: #ffcc00;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
-        .foto-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Mantém o padrão sem distorcer */
+        .card-materia a {
+            color: #001f3f;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
             display: block;
+            min-height: 54px; /* Alinha os títulos */
         }
 
-        .legenda {
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            color: #ffcc00;
-            font-size: 14px;
-            background: rgba(0, 0, 0, 0.2);
+        .card-materia p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
         }
 
-        /* 6. RODAPÉ (LARGURA TOTAL) */
+        /* --- 6. RODAPÉ (LARGURA TOTAL) --- */
         .footer-final {
             background-color: #001f3f;
             color: #fff;
             padding: 60px 0;
+            margin-top: 60px;
             width: 100%;
             text-align: center;
-            margin-top: 40px;
         }
 
         .footer-container {
@@ -157,7 +167,7 @@
         .footer-sociais {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .footer-sociais a {
@@ -171,7 +181,7 @@
             transform: scale(1.1);
         }
 
-        /* 7. WHATSAPP FLUTUANTE */
+        /* --- 7. WHATSAPP FLUTUANTE --- */
         .whatsapp-link {
             position: fixed;
             width: 60px;
@@ -191,16 +201,12 @@
         }
 
         /* RESPONSIVIDADE */
-        @media (max-width: 768px) {
-            .nav-menu {
-                gap: 10px;
-            }
-            .nav-menu li a {
-                font-size: 11px;
-            }
-            .titulo-galeria h1 {
-                font-size: 1.8rem;
-            }
+        @media (max-width: 1100px) {
+            .grade-materias { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 650px) {
+            .grade-materias { grid-template-columns: 1fr; }
+            .hero-materias h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -208,7 +214,7 @@
 
     <nav class="main-nav">
         <div class="nav-container">
-            <div class="nav-logo">Márcio O Fiscal do Povo</div>
+            <div class="nav-logo">O Fiscal do Povo</div>
             <ul class="nav-menu">
                 <li><a href="index.html">INÍCIO</a></li>
                 <li><a href="index.html#marcio">MÁRCIO</a></li>
@@ -218,12 +224,13 @@
         </div>
     </nav>
 
-    <header class="titulo-galeria">
+    <header class="hero-materias">
         <h1>Galeria de Fotos</h1>
-        <p>Ações e Fiscalizações em Conceição do Araguaia</p>
+        
     </header>
 
-    <main class="galeria-container">
+<main class="container-principal">
+        
         
         <div class="foto-card">
             <img src="img/foto1.jpg" alt="Fiscalização">
