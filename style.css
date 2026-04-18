@@ -1,4 +1,4 @@
-/* --- 1. RESET E VARIÁVEIS --- */
+/* --- RESET E VARIÁVEIS --- */
 * {
   margin: 0;
   padding: 0;
@@ -7,30 +7,26 @@
 
 :root {
   --azul-marinho: #001f3f;
-  --azul-claro: #002b5c;
   --dourado: #d4af37;
   --amarelo: #ffcc00;
   --branco: #ffffff;
-  --cinza-fundo: #f4f7f6;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--cinza-fundo);
-  color: #333;
-  line-height: 1.6;
+  background-color: #f4f7f6;
   overflow-x: hidden;
-  padding-bottom: 0; /* Ajustado via Media Query para Mobile */
 }
 
-/* --- 2. MENU SUPERIOR GLOBAL --- */
+/* --- MENU SUPERIOR (NAV) --- */
 .main-nav {
   background-color: var(--azul-marinho);
   width: 100%;
   border-bottom: 3px solid var(--dourado);
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 2000;
+  height: 70px;
 }
 
 .nav-container {
@@ -39,24 +35,25 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  height: 75px;
+  padding: 0 20px;
+  height: 100%;
 }
 
 .logo-img {
-  max-height: 55px;
+  max-height: 50px;
   width: auto;
-  display: block;
 }
 
-/* Menu Hambúrguer (Escondido no PC) */
+/* MENU HAMBÚRGUER (BOTÃO) */
 .menu-toggle {
-  display: none;
+  display: none; /* Escondido no PC */
   color: var(--branco);
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
+  z-index: 2100;
 }
 
+/* LINKS DO MENU */
 .nav-menu {
   list-style: none;
   display: flex;
@@ -67,7 +64,7 @@ body {
   color: var(--branco);
   text-decoration: none;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   transition: 0.3s;
 }
 
@@ -75,116 +72,54 @@ body {
   color: var(--amarelo);
 }
 
-/* --- 3. CONTEÚDO E GRADES (4 COLUNAS PC) --- */
-.container-principal {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-.grade-materias, .galeria-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.card-materia, .foto-card {
-  background: var(--branco);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: 0.3s ease;
-  border-top: 5px solid var(--azul-marinho);
-  text-decoration: none;
-  color: inherit;
-}
-
-.card-materia:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.foto-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-/* --- 4. RODAPÉ (LARGURA TOTAL) --- */
-.footer-final {
-  background-color: var(--azul-marinho) !important;
-  color: var(--branco);
-  padding: 60px 20px;
-  width: 100% !important;
-  text-align: center;
-  margin-top: 50px;
-  clear: both;
-}
-
-.footer-titulo {
-  color: var(--amarelo);
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  font-weight: 900;
-}
-
-.footer-sociais a {
-  color: var(--branco);
-  font-size: 2rem;
-  margin: 0 10px;
-  transition: 0.3s;
-}
-
-/* --- 5. INTERFACE MOBILE (ESTILO APP) --- */
-.mobile-tab-bar {
-  display: none; /* Escondido no PC */
-}
-
+/* --- CONFIGURAÇÃO PARA CELULAR (MOBILE) --- */
 @media (max-width: 768px) {
   body {
-      padding-bottom: 80px; /* Espaço para a barra inferior */
+      padding-bottom: 80px; /* Espaço para a barra de baixo */
   }
 
-  /* Ativar botão hambúrguer */
   .menu-toggle {
-      display: block;
+      display: block; /* APARECE NO CELULAR */
   }
 
-  /* Menu superior vira gaveta lateral/suspensa */
   .nav-menu {
-      display: none; 
+      display: none; /* Esconde os links por padrão */
       flex-direction: column;
       position: fixed;
-      top: 75px;
+      top: 70px;
       left: 0;
       width: 100%;
       background-color: var(--azul-marinho);
       padding: 20px;
       border-bottom: 3px solid var(--dourado);
-      z-index: 999;
+      text-align: center;
   }
 
   .nav-menu.active {
-      display: flex; /* Ativado via JS */
+      display: flex; /* Mostra quando o JS clicar */
   }
 
   .nav-menu li {
       margin: 15px 0;
-      text-align: center;
   }
 
   .nav-menu li a {
       font-size: 18px;
   }
 
-  /* Grades em 1 coluna (Estilo Feed de App) */
+  /* GRADES EM 1 COLUNA (ESTILO APP) */
   .grade-materias, .galeria-container {
       grid-template-columns: 1fr !important;
+      padding: 15px;
   }
+}
 
-  /* BARRA INFERIOR FIXA (APP TAB BAR) */
+/* BARRA INFERIOR (TAB BAR) */
+.mobile-tab-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
   .mobile-tab-bar {
       display: flex;
       position: fixed;
@@ -197,41 +132,15 @@ body {
       padding: 10px 0;
       z-index: 2000;
   }
-
+  
   .tab-item {
-      color: var(--branco);
+      color: white;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 10px;
   }
-
-  .tab-item i {
-      font-size: 22px;
-      margin-bottom: 2px;
-  }
-
-  .tab-item:active {
-      color: var(--amarelo);
-  }
-}
-
-/* --- 6. WHATSAPP FLUTUANTE --- */
-.whatsapp-link {
-  position: fixed;
-  width: 60px;
-  height: 60px;
-  bottom: 90px; /* Fica acima da barra do app */
-  right: 20px;
-  background-color: #25d366;
-  color: white;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  z-index: 1500;
-  text-decoration: none;
+  
+  .tab-item i { font-size: 22px; margin-bottom: 2px; }
 }
