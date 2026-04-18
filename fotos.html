@@ -2,315 +2,151 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeria de Fotos - Márcio O Fiscal do Povo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fotos - Márcio O Fiscal do Povo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 1. RESET E FUNDO --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* --- ESTILOS BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #002b5c; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
+
+        /* --- MENU SUPERIOR --- */
+        .main-nav { background-color: #001f3f; width: 100%; border-bottom: 3px solid #d4af37; position: sticky; top: 0; z-index: 2000; height: 75px; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 100%; }
+        .logo-img { max-height: 55px; width: auto; display: block; }
+        
+        .menu-toggle { display: none; color: #fff; font-size: 28px; cursor: pointer; }
+        .nav-menu { list-style: none; display: flex; gap: 20px; }
+        .nav-menu li a { color: #fff; text-decoration: none; font-weight: 700; font-size: 13px; transition: 0.3s; }
+        .nav-menu li a:hover { color: #ffcc00; }
+
+        /* --- TÍTULO DA PÁGINA --- */
+        .titulo-galeria { text-align: center; padding: 50px 20px 20px; }
+        .titulo-galeria h1 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; }
+        .titulo-galeria p { color: #ffcc00; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* --- GRADE DE FOTOS --- */
+        .galeria-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            max-width: 1200px; 
+            margin: 30px auto 80px; 
+            padding: 0 20px; 
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #002b5c; /* Fundo azul marinho para destacar as fotos */
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        /* --- 2. MENU DE NAVEGAÇÃO COM LOGO (PADRÃO INDEX) --- */
-        .main-nav {
-            background-color: #001f3f;
-            width: 100%;
-            border-bottom: 3px solid #d4af37;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-img {
-            max-height: 60px; /* Tamanho controlado da logo */
-            width: auto;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-menu li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            transition: 0.3s;
-        }
-
-        .nav-menu li a:hover {
-            color: #ffcc00;
-        }
-
-        /* --- 3. TÍTULO DA GALERIA --- */
-        .titulo-galeria {
-            text-align: center;
-            padding: 60px 20px 20px;
-        }
-
-        .titulo-galeria h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .titulo-galeria p {
-            color: #ffcc00;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        /* --- 4. GRADE DA GALERIA (ESTILO CARDS) --- */
-        .galeria-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 40px auto 80px;
-            padding: 0 20px;
-        }
-
-        .foto-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .foto-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 12px; 
+            overflow: hidden; 
+            transition: 0.3s; 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
             display: flex;
             flex-direction: column;
         }
+        .foto-card:hover { transform: translateY(-10px); border-color: #ffcc00; }
+        .foto-card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .legenda { padding: 15px; text-align: center; font-weight: bold; color: #ffcc00; font-size: 14px; background: rgba(0, 0, 0, 0.3); }
 
-        .foto-card:hover {
-            transform: translateY(-10px);
-            border-color: #ffcc00;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        /* --- RODAPÉ --- */
+        .main-footer { background: #001a33; padding: 60px 20px; border-top: 5px solid #d4af37; text-align: center; width: 100%; color: white; }
+        .footer-sociais { display: flex; gap: 25px; justify-content: center; margin-top: 25px; }
+        .footer-sociais a { color: white; font-size: 2.2rem; transition: 0.3s; }
+        .footer-sociais a:hover { color: #ffcc00; }
 
-        .foto-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover; /* Recorte inteligente para manter padrão */
-            display: block;
-        }
-
-        .legenda {
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
-            color: #ffcc00;
-            font-size: 14px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        /* --- 5. RODAPÉ (LARGURA TOTAL) --- */
-        .footer-final {
-            background-color: #001f3f;
-            color: #fff;
-            padding: 80px 0 40px;
-            width: 100%;
-            text-align: center;
-            clear: both;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-titulo {
-            color: #ffcc00;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-weight: 900;
-        }
-
-        .footer-copyright {
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
-
-        .footer-sociais {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .footer-sociais a {
-            color: #fff;
-            font-size: 2.5rem;
-            transition: 0.3s;
-        }
-
-        .footer-sociais a:hover {
-            color: #ffcc00;
-            transform: scale(1.1);
-        }
-
-        /* --- 6. WHATSAPP FLUTUANTE --- */
-        .whatsapp-link {
-            position: fixed;
-            width: 65px;
-            height: 65px;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 2000;
-            text-decoration: none;
-        }
-
-        /* RESPONSIVIDADE */
+        /* --- RESPONSIVIDADE APP --- */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .titulo-galeria h1 { font-size: 1.8rem; }
+            body { padding-bottom: 80px; }
+            .menu-toggle { display: block; }
+            .nav-menu { display: none; flex-direction: column; position: fixed; top: 75px; left: 0; width: 100%; background: #001f3f; padding: 20px 0; border-bottom: 3px solid #d4af37; }
+            .nav-menu.active { display: flex !important; }
+            .nav-menu li { text-align: center; margin: 15px 0; }
+            .nav-menu li a { font-size: 18px; }
+            
             .galeria-container { grid-template-columns: 1fr; }
+
+            .mobile-tab-bar { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background: #001f3f; border-top: 2px solid #d4af37; justify-content: space-around; padding: 10px 0; z-index: 2000; }
+            .tab-item { color: white; text-decoration: none; display: flex; flex-direction: column; align-items: center; font-size: 10px; }
+            .tab-item i { font-size: 22px; }
         }
+        
+        .mobile-tab-bar { display: none; }
+        .whatsapp-float { position: fixed; width: 60px; height: 60px; bottom: 90px; right: 20px; background-color: #25d366; color: #FFF; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1500; text-decoration: none; }
     </style>
 </head>
 <body>
 
-  <nav class="main-nav">
-    <div class="nav-container">
-        <div class="nav-logo">
-            <a href="index.html">
-                <img src="img/logo.png" alt="O Fiscal do Povo" class="logo-img">
-            </a>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html"><img src="img/10.jpg" alt="Logo" class="logo-img"></a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu">
+                <li><a href="index.html">INÍCIO</a></li>
+                <li><a href="materias.html">MATÉRIAS</a></li>
+            </ul>
         </div>
-        
-        <div class="menu-toggle" id="mobile-menu">
-          <i class="fas fa-bars"></i>
-      </div>
-
-        <ul class="nav-menu">
-            <li><a href="index.html">INÍCIO</a></li>
-            <li><a href="index.html#marcio">MÁRCIO</a></li>
-            <li><a href="materias.html">MATÉRIAS</a></li>
-            <li><a href="fotos.html">FOTOS</a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
     <header class="titulo-galeria">
         <h1>Galeria de Fotos</h1>
-        
+        <p>Márcio O Fiscal do Povo</p>
     </header>
 
     <main class="galeria-container">
         
         <div class="foto-card">
-            <img src="img/00.jpg" alt="Ação 1">
-            <div class="legenda">2026-2028</div>
+            <img src="img/foto1.jpg" alt="Fiscalização">
+            <div class="legenda">Fiscalização em Obras Públicas</div>
         </div>
 
         <div class="foto-card">
-            <img src="img/01.jpg" alt="Ação 2">
-            <div class="legenda">2026-2028</div>
+            <img src="img/foto2.jpg" alt="Ação">
+            <div class="legenda">Ouvindo a Comunidade</div>
         </div>
 
         <div class="foto-card">
-            <img src="img/03.png" alt="Ação 3">
-            <div class="legenda">2026-2028</div>
+            <img src="img/foto3.jpg" alt="Câmara">
+            <div class="legenda">Ação na Câmara Municipal</div>
         </div>
 
         <div class="foto-card">
-            <img src="img/04.jpeg" alt="Ação 4">
-            <div class="legenda">2026-2028</div>
-        </div>
-
-        <div class="foto-card">
-            <img src="img/05.jpeg" alt="Ação 5">
-            <div class="legenda">2026-2028</div>
-        </div>
-
-        <div class="foto-card">
-            <img src="img/08.jpg" alt="Ação 6">
-            <div class="legenda">2026-2028</div>
+            <img src="img/foto4.jpg" alt="Saúde">
+            <div class="legenda">Visita Técnica à Saúde</div>
         </div>
 
     </main>
 
-    <footer class="footer-final">
-        <div class="footer-container">
-            <h2 class="footer-titulo">MÁRCIO O FISCAL DO POVO</h2>
-            <p class="footer-copyright">© 2026 Todos os direitos reservados. Conceição do Araguaia - PA</p>
-            
-            <div class="footer-sociais">
-                <a href="https://wa.me/5594992500073" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://facebook.com/MarcioFiscalDoPovo" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com/marcioofiscaldopovo/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@MarcioFiscalDoPovo" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
+    <footer class="main-footer">
+        <h2 style="color: #d4af37; margin-bottom: 10px;">MÁRCIO O FISCAL DO POVO</h2>
+        <p>© 2026 Todos os direitos reservados. Conceição do Araguaia - PA</p>
+        <div class="footer-sociais">
+            <a href="https://wa.me/5594992500073" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://facebook.com/MarcioFiscalDoPovo" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://instagram.com/marcioofiscaldopovo/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@MarcioFiscalDoPovo" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 
-    <a href="https://wa.me/5594992500073" class="whatsapp-link" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <nav class="mobile-tab-bar">
+        <a href="index.html" class="tab-item"><i class="fas fa-home"></i><span>INÍCIO</span></a>
+        <a href="materias.html" class="tab-item"><i class="fas fa-file-alt"></i><span>MATÉRIAS</span></a>
+    </nav>
+
+    <a href="https://wa.me/5594992500073" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
     <script>
-      // Selecionamos o botão pelo ID e o menu pela CLASSE
-      const menuBtn = document.getElementById('mobile-menu');
-      const navMenu = document.querySelector('.nav-menu');
-  
-      if(menuBtn) {
-          menuBtn.addEventListener('click', function() {
-              console.log("Botão clicado!"); // Se aparecer isso no console, o JS está ok
-              navMenu.classList.toggle('active');
-              
-              // Troca o ícone
-              const icon = this.querySelector('i');
-              icon.classList.toggle('fa-bars');
-              icon.classList.toggle('fa-times');
-          });
-      }
-  
-      // Fecha ao clicar em qualquer link
-      document.querySelectorAll('.nav-menu a').forEach(link => {
-          link.addEventListener('click', () => {
-              navMenu.classList.remove('active');
-              const icon = menuBtn.querySelector('i');
-              icon.classList.add('fa-bars');
-              icon.classList.remove('fa-times');
-          });
-      });
-  </script>
+        const menuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+    </script>
 </body>
 </html>
