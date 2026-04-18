@@ -1,4 +1,4 @@
-/* --- 1. RESET E CONFIGURAÇÕES GERAIS --- */
+/* --- 1. RESET E VARIÁVEIS --- */
 * {
   margin: 0;
   padding: 0;
@@ -20,9 +20,10 @@ body {
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
+  padding-bottom: 0; /* Ajustado via Media Query para Mobile */
 }
 
-/* --- 2. MENU SUPERIOR (PC) --- */
+/* --- 2. MENU SUPERIOR GLOBAL --- */
 .main-nav {
   background-color: var(--azul-marinho);
   width: 100%;
@@ -39,12 +40,21 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  height: 75px;
 }
 
 .logo-img {
   max-height: 55px;
   width: auto;
   display: block;
+}
+
+/* Menu Hambúrguer (Escondido no PC) */
+.menu-toggle {
+  display: none;
+  color: var(--branco);
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .nav-menu {
@@ -65,21 +75,19 @@ body {
   color: var(--amarelo);
 }
 
-/* --- 3. CONTEÚDO E GRADES (APP STYLE) --- */
+/* --- 3. CONTEÚDO E GRADES (4 COLUNAS PC) --- */
 .container-principal {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* Grade de 4 colunas para Matérias e Fotos */
 .grade-materias, .galeria-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* Estilo Card Premium */
 .card-materia, .foto-card {
   background: var(--branco);
   border-radius: 12px;
@@ -89,14 +97,22 @@ body {
   transition: 0.3s ease;
   border-top: 5px solid var(--azul-marinho);
   text-decoration: none;
+  color: inherit;
 }
 
-.card-materia:hover, .foto-card:hover {
+.card-materia:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* --- 4. RODAPÉ GLOBAL (LARGURA TOTAL) --- */
+.foto-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* --- 4. RODAPÉ (LARGURA TOTAL) --- */
 .footer-final {
   background-color: var(--azul-marinho) !important;
   color: var(--branco);
@@ -114,39 +130,61 @@ body {
   font-weight: 900;
 }
 
-.footer-sociais {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  margin-top: 20px;
-}
-
 .footer-sociais a {
   color: var(--branco);
   font-size: 2rem;
+  margin: 0 10px;
   transition: 0.3s;
 }
 
-/* --- 5. MOBILE APP INTERFACE (BARRA INFERIOR) --- */
-
-/* Esconder barra de app no PC */
+/* --- 5. INTERFACE MOBILE (ESTILO APP) --- */
 .mobile-tab-bar {
-  display: none;
+  display: none; /* Escondido no PC */
 }
 
 @media (max-width: 768px) {
-  /* Esconder menu do topo no celular */
-  .main-nav {
-      display: none;
+  body {
+      padding-bottom: 80px; /* Espaço para a barra inferior */
   }
 
-  /* Forçar 1 coluna no celular (Estilo Feed de App) */
+  /* Ativar botão hambúrguer */
+  .menu-toggle {
+      display: block;
+  }
+
+  /* Menu superior vira gaveta lateral/suspensa */
+  .nav-menu {
+      display: none; 
+      flex-direction: column;
+      position: fixed;
+      top: 75px;
+      left: 0;
+      width: 100%;
+      background-color: var(--azul-marinho);
+      padding: 20px;
+      border-bottom: 3px solid var(--dourado);
+      z-index: 999;
+  }
+
+  .nav-menu.active {
+      display: flex; /* Ativado via JS */
+  }
+
+  .nav-menu li {
+      margin: 15px 0;
+      text-align: center;
+  }
+
+  .nav-menu li a {
+      font-size: 18px;
+  }
+
+  /* Grades em 1 coluna (Estilo Feed de App) */
   .grade-materias, .galeria-container {
       grid-template-columns: 1fr !important;
-      padding: 10px;
   }
 
-  /* Barra Inferior Fixa */
+  /* BARRA INFERIOR FIXA (APP TAB BAR) */
   .mobile-tab-bar {
       display: flex;
       position: fixed;
@@ -154,10 +192,10 @@ body {
       left: 0;
       width: 100%;
       background-color: var(--azul-marinho);
-      border-top: 3px solid var(--dourado);
+      border-top: 2px solid var(--dourado);
       justify-content: space-around;
-      padding: 12px 0;
-      z-index: 9999;
+      padding: 10px 0;
+      z-index: 2000;
   }
 
   .tab-item {
@@ -167,35 +205,24 @@ body {
       flex-direction: column;
       align-items: center;
       font-size: 10px;
-      font-weight: bold;
   }
 
   .tab-item i {
       font-size: 22px;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
   }
 
   .tab-item:active {
       color: var(--amarelo);
   }
-
-  /* Dar espaço embaixo para a barra não cobrir o conteúdo */
-  body {
-      padding-bottom: 80px;
-  }
-
-  /* Ajuste da Imagem Hero no celular */
-  .hero-image {
-      max-width: 250px !important;
-  }
 }
 
-/* --- 6. BOTÃO WHATSAPP FLUTUANTE --- */
-.whatsapp-btn {
+/* --- 6. WHATSAPP FLUTUANTE --- */
+.whatsapp-link {
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 90px; /* Subi um pouco para não bater na barra do app */
+  bottom: 90px; /* Fica acima da barra do app */
   right: 20px;
   background-color: #25d366;
   color: white;
