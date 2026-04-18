@@ -1,196 +1,210 @@
-/* --- RESET E CONFIGURAÇÕES GERAIS --- */
+/* --- 1. RESET E CONFIGURAÇÕES GERAIS --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  --azul-marinho: #001f3f;
+  --azul-claro: #002b5c;
+  --dourado: #d4af37;
+  --amarelo: #ffcc00;
+  --branco: #ffffff;
+  --cinza-fundo: #f4f7f6;
+}
+
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--cinza-fundo);
+  color: #333;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* --- CONTAINER DAS MATÉRIAS (CENTRALIZADO) --- */
-.container-principal {
-  max-width: 1200px;
-  margin: 40px auto; /* Centraliza o bloco na página */
-  padding: 0 20px;
+/* --- 2. MENU SUPERIOR (PC) --- */
+.main-nav {
+  background-color: var(--azul-marinho);
+  width: 100%;
+  border-bottom: 3px solid var(--dourado);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* --- GRADE DE MATÉRIAS: 4 POR LINHA --- */
-.grade-materias {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Cria as 4 colunas */
-  gap: 20px; /* Espaço entre os cards */
-}
-
-/* --- ESTILO DO CARD --- */
-.card-materia {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-materia:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-  border-color: #001f3f;
-}
-
-.card-materia h3 {
-  color: #001f3f; /* Azul Marinho */
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-  min-height: 50px; /* Mantém títulos alinhados */
-  border-bottom: 2px solid #ffcc00; /* Linha dourada */
-  padding-bottom: 8px;
-}
-
-.card-materia p {
-  color: #555;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-}
-
-/* --- RODAPÉ (IGUAL À INDEX - LARGURA TOTAL) --- */
-.footer-global {
-  background-color: #001f3f !important; /* Azul Marinho Oficial */
-  width: 100% !important;
-  padding: 60px 0 !important;
-  margin-top: 60px !important;
-  clear: both;
-}
-
-.footer-container-global {
+.nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
-}
-
-.footer-titulo-global {
-  color: #ffcc00 !important; /* Dourado Oficial */
-  font-size: 28px !important;
-  font-weight: bold !important;
-  margin-bottom: 10px !important;
-  text-transform: uppercase;
-}
-
-.footer-copy-global {
-  color: #ffffff !important;
-  font-size: 14px !important;
-  margin-bottom: 25px !important;
-}
-
-.footer-redes-global {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo-img {
+  max-height: 55px;
+  width: auto;
+  display: block;
+}
+
+.nav-menu {
+  list-style: none;
+  display: flex;
   gap: 20px;
 }
 
-.footer-redes-global a {
-  color: #ffffff !important;
-  font-size: 30px !important;
+.nav-menu li a {
+  color: var(--branco);
   text-decoration: none;
-  transition: color 0.3s;
+  font-weight: 700;
+  font-size: 13px;
+  transition: 0.3s;
 }
 
-.footer-redes-global a:hover {
-  color: #ffcc00 !important;
+.nav-menu li a:hover {
+  color: var(--amarelo);
 }
 
-/* --- WHATSAPP FLUTUANTE --- */
+/* --- 3. CONTEÚDO E GRADES (APP STYLE) --- */
+.container-principal {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Grade de 4 colunas para Matérias e Fotos */
+.grade-materias, .galeria-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* Estilo Card Premium */
+.card-materia, .foto-card {
+  background: var(--branco);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+  border-top: 5px solid var(--azul-marinho);
+  text-decoration: none;
+}
+
+.card-materia:hover, .foto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* --- 4. RODAPÉ GLOBAL (LARGURA TOTAL) --- */
+.footer-final {
+  background-color: var(--azul-marinho) !important;
+  color: var(--branco);
+  padding: 60px 20px;
+  width: 100% !important;
+  text-align: center;
+  margin-top: 50px;
+  clear: both;
+}
+
+.footer-titulo {
+  color: var(--amarelo);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 900;
+}
+
+.footer-sociais {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.footer-sociais a {
+  color: var(--branco);
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+/* --- 5. MOBILE APP INTERFACE (BARRA INFERIOR) --- */
+
+/* Esconder barra de app no PC */
+.mobile-tab-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Esconder menu do topo no celular */
+  .main-nav {
+      display: none;
+  }
+
+  /* Forçar 1 coluna no celular (Estilo Feed de App) */
+  .grade-materias, .galeria-container {
+      grid-template-columns: 1fr !important;
+      padding: 10px;
+  }
+
+  /* Barra Inferior Fixa */
+  .mobile-tab-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--azul-marinho);
+      border-top: 3px solid var(--dourado);
+      justify-content: space-around;
+      padding: 12px 0;
+      z-index: 9999;
+  }
+
+  .tab-item {
+      color: var(--branco);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      font-weight: bold;
+  }
+
+  .tab-item i {
+      font-size: 22px;
+      margin-bottom: 4px;
+  }
+
+  .tab-item:active {
+      color: var(--amarelo);
+  }
+
+  /* Dar espaço embaixo para a barra não cobrir o conteúdo */
+  body {
+      padding-bottom: 80px;
+  }
+
+  /* Ajuste da Imagem Hero no celular */
+  .hero-image {
+      max-width: 250px !important;
+  }
+}
+
+/* --- 6. BOTÃO WHATSAPP FLUTUANTE --- */
 .whatsapp-btn {
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 30px;
-  right: 30px;
+  bottom: 90px; /* Subi um pouco para não bater na barra do app */
+  right: 20px;
   background-color: #25d366;
-  color: #FFF;
+  color: white;
   border-radius: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
   box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-  z-index: 1000;
+  z-index: 1500;
   text-decoration: none;
-}
-
-/* --- RESPONSIVIDADE (PARA CELULAR E TABLET) --- */
-@media (max-width: 1024px) {
-  .grade-materias {
-      grid-template-columns: repeat(2, 1fr); /* 2 por linha em tablets */
-  }
-}
-
-@media (max-width: 600px) {
-  .grade-materias {
-      grid-template-columns: 1fr; /* 1 por linha no celular */
-  }
-  
-  .footer-titulo-global {
-      font-size: 20px !important;
-  }
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  height: 50px; /* Ajuste essa altura conforme o gosto */
-  width: auto;  /* Mantém a proporção da imagem */
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-  transform: scale(1.05); /* Efeito leve ao passar o mouse */
-}
-
-/* Ajuste para celular: se a logo ficar grande, diminua aqui */
-@media (max-width: 600px) {
-  .logo-img {
-      height: 40px;
-  }
-}
-
-/* Ajuste do Container do Menu */
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Alinha a logo e os textos na mesma linha */
-  padding: 0 20px;
-  height: 80px; /* Define uma altura fixa para o menu */
-}
-
-/* Controle da Logo */
-.nav-logo {
-  display: flex;
-  align-items: center;
-}
-
-.logo-img {
-  max-height: 60px; /* Isso impede que a logo fique gigante como na foto */
-  width: auto;      /* Mantém a proporção */
-  display: block;
-}
-
-/* Garante que o menu de links não suma */
-.nav-menu {
-  display: flex;
-  gap: 20px;
-  list-style: none;
 }
